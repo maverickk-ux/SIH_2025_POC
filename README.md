@@ -70,7 +70,7 @@ Follow these steps to get the project's initial prototype running.
 
 ***
 
-## ධ Running the Prototype
+## Running the Prototype
 
 The following command runs the initial prototype, which has the **color analysis module** enabled:
 
@@ -83,3 +83,7 @@ Once the installation is complete, run the main script from your terminal.
 
 ```bash
 python Prototype.py
+
+To run with a video file:
+Use the --source flag to provide the path to your video.
+python prototype.py --source "path/to/your/video.mp4"
