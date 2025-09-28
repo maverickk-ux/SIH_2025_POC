@@ -41,3 +41,7 @@ ultralytics==8.3.139
 ultralytics-thop==2.0.14
 urllib3==2.4.0
 zipp==3.21.0
+scikit-learn
+colorspacious
+deep-sort-realtime
+deepface
