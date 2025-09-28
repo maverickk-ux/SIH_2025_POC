@@ -5,43 +5,44 @@ This prototype is a real-time video analysis tool that uses object detection and
 
 ## 🌟 Key Features
 
-- **Real-Time Object Detection**: Utilizes the YOLOv8n model to detect objects in a live video stream.
-- **Dominant Color Analysis**: Employs K-Means clustering to accurately determine the most prominent color of a detected object.
-- **Advanced Color Naming**: Translates RGB values into human-readable names using the perceptual CIELAB color space for higher accuracy.
-- **Descriptive Color Properties**: Analyzes and describes colors based on their brightness and saturation (e.g., "Bright Red", "Dark Blue").
-- **Interactive Visualization**: Overlays bounding boxes, color names, and RGB values directly onto the live camera feed using OpenCV.
+-   **Modular Architecture**: The framework's core strength. New analysis capabilities (like facial recognition or activity detection) can be developed as separate modules and easily plugged into the main pipeline.
+-   **Real-Time Detection Engine**: Utilizes the powerful **YOLOv8n** model to detect a wide variety of objects in live video streams with high speed and accuracy.
+-   **Extensible & Scalable**: Designed from the ground up to grow. The system can handle multiple, simultaneous analysis tasks on detected objects.
+-   **Proof-of-Concept Module: Advanced Color Analysis**: The first functioning module, which includes:
+    -   **Dominant Color Analysis**: Employs K-Means clustering to accurately determine the most prominent color of any detected object.
+    -   **Advanced Color Naming**: Translates RGB values into human-readable names using the perceptual CIELAB color space for high accuracy.
 
 ***
 
-## 🧠 About the Model: YOLOv8n
+## 🚀 Future Capabilities & Roadmap
 
-This prototype uses **YOLOv8n**, the "nano" version of the state-of-the-art **Y**ou **O**nly **L**ook **O**nce (YOLO) object detection model.
+The true power of this framework lies in its extensibility. The current color detection module is just the beginning. Future modules planned for integration include:
 
--   **Lightweight & Fast**: The 'n' signifies that it is the smallest and fastest variant in the YOLOv8 family. It is specifically designed for high-performance, real-time detection even on standard hardware (like a laptop CPU) without requiring a powerful dedicated GPU.
--   **Pre-trained**: The model comes pre-trained on the extensive COCO dataset, enabling it to recognize 80 common object classes (like people, cars, cups, etc.) right out of the box.
+-   **👤 Facial Recognition**: A high-priority module to **detect faces** in the video feed and **identify them against a database of registered individuals**. This will enable features like automated attendance, watchlist alerting, and access control.
+-   **🏃 Activity Recognition**: To identify patterns, actions, and events, such as detecting loitering, running, falling, or unusual crowd behavior.
+-   **🔍 Text Recognition (OCR)**: To read text from the video stream, such as on signs, documents, or license plates.
 
 ***
 
 ## ⚙️ How It Works
 
-The application follows a simple yet powerful pipeline for each frame of the video:
+The framework operates on a flexible, multi-stage pipeline:
 
-1.  **Capture Frame**: OpenCV captures a frame from the default camera.
-2.  **Detect Objects**: The frame is passed to the pre-trained **YOLOv8n** model, which returns the coordinates of bounding boxes for any detected objects.
-3.  **Extract Dominant Color**: For each bounding box, the pixels within are analyzed using K-Means clustering to find the dominant color.
-4.  **Interpret Color**: The resulting RGB value is converted to the CIELAB color space to find the closest, most perceptually accurate color name from an extended list of over 140 colors.
-5.  **Display Results**: The original frame is updated with a colored bounding box, the descriptive color name (e.g., "Vivid Green"), and the precise RGB value. This is then displayed to the user.
+1.  **Capture Frame**: OpenCV captures a frame from a video source (e.g., a live camera).
+2.  **Detect Objects**: The frame is fed to the **YOLOv8n** engine, which identifies all objects and their locations (bounding boxes).
+3.  **Process Through Modules**: The list of detected objects is passed to all active analysis modules. In the current prototype, this is the Color Analysis Module.
+4.  **Aggregate & Display Results**: The insights from all modules are collected and visualized on the output stream. For the prototype, this includes drawing colored bounding boxes and labels for each object.
 
 ***
 
 ## 🛠️ Setup and Installation
 
-Follow these steps to get the project running on your local machine.
+Follow these steps to get the project's initial prototype running.
 
 ### Prerequisites
 
-- Python 3.8+
-- `pip` (Python package installer)
+-   Python 3.8+
+-   `pip` (Python package installer)
 
 ### Installation Steps
 
@@ -63,12 +64,18 @@ Follow these steps to get the project running on your local machine.
     ```
 
 3.  **Install the required dependencies:**
-    The project uses several libraries, including `ultralytics`, `opencv-python`, `scikit-learn`, and `torch`. You can install them all using the `requirements.txt` file.
     ```bash
     pip install -r requirements.txt
     ```
 
 ***
+
+## ධ Running the Prototype
+
+The following command runs the initial prototype, which has the **color analysis module** enabled:
+
+```bash
+python Prototype.py
 
 ## 🚀 Running the Application
 
